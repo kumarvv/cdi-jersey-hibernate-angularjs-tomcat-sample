@@ -1,4 +1,4 @@
-cdi-resteasy-hibernate-angularjs-tomcat-sample
+cdi-jersey-hibernate-angularjs-tomcat-sample
 ==============================================
 
 Sample application with full CRUD for Airport codes to showcase following technologies: 
