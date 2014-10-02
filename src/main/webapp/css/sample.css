@@ -1,0 +1,62 @@
+.hdr {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	left: 0px;
+	height: 50px;
+	background-color: #5C6064;
+	box-shadow: 0 0 10px 5px grey;
+	z-index: 999;
+	vertical-align: middle;
+	border-radius: 0px 0px 4px 4px;
+}
+
+.title {
+	font-family: "Helvetica Neue", Arial;
+	font-size: 32px;
+	color: #f5f5f5;
+}
+
+.body {
+	position: absolute;
+	top: 50px;
+	bottom: 0px;
+	right: 30px;
+	left: 30px;
+	padding-top: 10px;
+}
+
+.body-data {
+	position: absolute;
+	overflow: auto;
+	top: 50px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+}
+
+.left-inner-addon {
+	position: relative;
+}
+.left-inner-addon input {
+	padding-left: 30px;
+}
+.left-inner-addon i {
+	position: absolute;
+	padding: 10px 12px;
+	pointer-events: none;
+}
+
+.drop-shadow {
+	-webkit-box-shadow: 0 0 5px 4px rgba(0, 0, 0, .2);
+	box-shadow: 0 0 5px 4px rgba(0, 0, 0, .2);
+}
+
+.table-row {
+	border-bottom: 1px solid aliceblue;
+	padding-bottom: 10px;
+}
+
+.delete-btn {
+	color: red;
+}

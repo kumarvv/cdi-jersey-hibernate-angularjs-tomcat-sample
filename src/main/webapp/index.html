@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html ng-app="sampleApp">
+<head>
+	<title>sample</title>
+	<link rel="stylesheet" href="css/sample.css">
+
+	<!-- angular-js -->
+	<script src="js/angular.min.js"></script>
+	<script src="js/sample.js"></script>
+
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<script src="js/ui-bootstrap-tpls-0.11.0.min.js"></script>
+
+</head>
+<body>
+	<div class="container-fluid" ng-controller="sampleController">
+		<div class="hdr navbar" style="border-radius: 0px 0px 4px 4px;">
+			<div class="col-xs-2 title">Airports</div>
+			<div class="col-xs-10 navbar-right">
+				<div class="navbar-form navbar-right" role="search">
+					<div class="form-group">
+						<div class="left-inner-addon">
+							<i class="glyphicon glyphicon-search"></i>
+							<div class="form-group">
+								<input type="text"
+										 style="width: 250px;"
+										 class="form-control"
+										 placeholder="Type here to search airports"
+										 ng-model="searchAirport"
+										 ng-change="searchAirports()" />
+								<button type="submit" class="btn btn-primary" ng-click="newAirportModal()"><span class="glyphicon glyphicon-plus"></span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="body drop-shadow">
+			<ul class="table-row">
+				<div class="row">
+					<span class="col-xs-2 text-primary">CODE</span>
+					<span class="col-xs-5 text-primary">NAME</span>
+					<span class="col-xs-4 text-primary">COUNTRY</span>
+					<span class="col-xs-1">&nbsp;</span>
+				</div>
+			</ul>
+			<div class="body-data">
+				<ul ng-repeat="airport in airports" class="table-row">
+					<div class="row">
+						<span class="col-xs-2 text-info">{{ airport.code }}</span>
+						<span class="col-xs-5 text-info">{{ airport.name }}</span>
+						<span class="col-xs-4 text-info">{{ airport.country }}</span>
+						<span class="col-xs-1">
+							<span class="glyphicon glyphicon-pencil" ng-click="showAirportModal(airport)"></span>
+							<span class="glyphicon glyphicon-remove delete-btn" ng-click="deleteAirportModal(airport)"></span>
+						</span>
+					</div>
+				</ul>
+			</div>
+		</div>
+		<script type="text/ng-template" id="editAirportModal.html">
+			<div class="modal-header sample-model-hdr">
+			<span ng-show="selectedAirport.id > 0">
+				<h4 class="text-info">edit: <span>{{ selectedAirport.name }}</span></h4>
+			</span>
+			<span ng-hide="selectedAirport.id > 0">
+				<h4 class="text-info">add: <span>{{ selectedAirport.name }}</span></h4>
+			</span>
+			</div>
+			<div class="modal-body">
+				<form id="editAirportForm">
+					<div class="form-group">
+						<label for="code">Code</label>
+						<input id="code" type="text" class="form-control" placeholder="Code"
+								 ng-model="selectedAirport.code" ng-required="true"/>
+					</div>
+					<div class="form-group">
+						<label for="name">Name</label>
+						<input id="name" type="text" class="form-control" placeholder="Name"
+								 ng-model="selectedAirport.name" ng-required="false"/>
+					</div>
+					<div class="form-group">
+						<label for="country">Country</label>
+						<input id="country" type="text" class="form-control" placeholder="Country"
+								 ng-model="selectedAirport.country" ng-required="false"/>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer sample-model-footer">
+				<button class="btn btn-primary" ng-click="ok()">OK</button>
+				<button class="btn btn-info" ng-click="cancel()">Cancel</button>
+			</div>
+		</script>
+		<script type="text/ng-template" id="deleteAirportModal.html">
+			<div class="modal-header vf-model-hdr">
+				<h4 class="text-info">delete: <span>{{ selectedAirport.name }} ({{ selectedAirport.code }})</span></h4>
+			</div>
+			<div class="modal-body">
+				<h5>Do you really want to delete this airport?</h5>
+			</div>
+			<div class="modal-footer vf-model-footer">
+				<button class="btn btn-danger" ng-click="ok()">Delete</button>
+				<button class="btn btn-info" ng-click="cancel()">Cancel</button>
+			</div>
+		</script>
+	</div>
+</body>
+</html>
